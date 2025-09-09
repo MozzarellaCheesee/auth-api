@@ -1,1 +1,0 @@
-(actix_web::web::Json<user_registration_input::UserRegistryInput>, actix_web::web::Data<Argon2<'_>>, actix_web::web::Data<Pool<AsyncDieselConnectionManager<AsyncPgConnection>>>)
