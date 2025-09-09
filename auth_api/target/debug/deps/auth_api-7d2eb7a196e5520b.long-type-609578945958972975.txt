@@ -1,0 +1,3 @@
+(i64, std::string::String, std::string::String, std::string::String, std::string::String, std::string::String, bool, std::option::Option<std::string::String>)
+(BigInt, diesel::sql_types::Text, diesel::sql_types::Text, diesel::sql_types::Text, diesel::sql_types::Text, diesel::sql_types::Text, diesel::sql_types::Bool, diesel::sql_types::Text)
+(i64, std::string::String, std::string::String, std::string::String, std::string::String, std::string::String, bool, std::option::Option<std::string::String>): FromStaticSqlRow<(BigInt, diesel::sql_types::Text, diesel::sql_types::Text, diesel::sql_types::Text, diesel::sql_types::Text, diesel::sql_types::Text, diesel::sql_types::Bool, diesel::sql_types::Text), Pg>

@@ -1,0 +1,49 @@
+version: '3.8'
+services:
+
+  api-gate:
+    image: api-gate
+    container_name: api-gateway-c
+    ports:
+      - "5000:5000"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+    networks:
+      - api-network
+    depends_on:
+      - pinger-api
+      - auth-api
+    restart: unless-stopped
+      
+  pinger-api:
+    image: pinger-api
+    container_name: pinger-api-c
+    ports:
+      - "5001:5001"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://0.0.0.0:5001
+    networks:
+      - api-network
+    restart: unless-stopped
+
+  auth-api:
+    image: auth-api
+    container_name: auth-api-c
+    ports:
+      - "5002:5002"
+    environment:
+      - RUST_LOG=info
+      - APP_PORT=5002
+    networks:
+      - api-network
+      - db-network
+    restart: unless-stopped
+
+networks:
+  api-network:
+    external: true
+    name: api-network
+  db-network:
+    external: true
+    name: db-network
