@@ -1,0 +1,18 @@
+@startuml
+left to right direction
+
+actor "Пользователь" as User
+
+package "Авторизация" {
+
+    usecase "Регистрация" as UC_Register
+    usecase "Авторизация"" as UC_Login
+    usecase "Выход из аккаунта" as UC_Logout
+}
+
+
+User --> UC_Login
+User --> UC_Register
+User --> UC_Logout
+
+@enduml
