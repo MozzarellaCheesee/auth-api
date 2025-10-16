@@ -1,3 +1,4 @@
 ﻿.git
 .idea
 *.exe
+auth_api/target
