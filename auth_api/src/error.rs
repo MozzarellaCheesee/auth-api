@@ -26,6 +26,8 @@ pub enum CustomError {
     ExpiredTokenError(String),
     #[error("{0}")]
     RevorkTokenError(String),
+    #[error("{0}")]
+    TokenIsNotValid(String),
     
     
 }
@@ -36,16 +38,17 @@ impl ResponseError for CustomError {
             CustomError::HashingError(_) => actix_web::http::StatusCode::INTERNAL_SERVER_ERROR,
             CustomError::DbError(_) => actix_web::http::StatusCode::INTERNAL_SERVER_ERROR,
             CustomError::TokenCreationError(_) => actix_web::http::StatusCode::INTERNAL_SERVER_ERROR,
+            CustomError::TokenIsNotValid(_) => actix_web::http::StatusCode::INTERNAL_SERVER_ERROR,
             CustomError::RevorkTokenError(_) => actix_web::http::StatusCode::INTERNAL_SERVER_ERROR,
-            
+
             CustomError::UsernameAlreadyExists(_) => actix_web::http::StatusCode::CONFLICT,
+
             CustomError::EmailAlreadyExists(_) => actix_web::http::StatusCode::CONFLICT,
-            
             CustomError::EmailNotConfirmed(_) => actix_web::http::StatusCode::UNAUTHORIZED,
             CustomError::UserIsNotExist(_) => actix_web::http::StatusCode::UNAUTHORIZED,
             CustomError::WrongPasswordError(_) => actix_web::http::StatusCode::UNAUTHORIZED,
             CustomError::ExpiredTokenError(_) => actix_web::http::StatusCode::UNAUTHORIZED,
-            
+
             CustomError::InvalidInput(_) => actix_web::http::StatusCode::BAD_REQUEST,
         }
     }

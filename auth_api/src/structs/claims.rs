@@ -63,8 +63,6 @@ impl Claims {
 
     pub async fn save_token(&self, conn: &mut AsyncPgConnection, found_user: &User) -> Result<IssuedJwtToken, CustomError> {
 
-
-
         let new_auth = NewIssuedJwtToken {
             jti: &self.jti,
             user_id: found_user.id,

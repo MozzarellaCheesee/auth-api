@@ -27,6 +27,7 @@ impl AuthLogoutInput {
     pub fn transcript_token(&self) -> Result<Claims, jsonwebtoken::errors::Error> {
         let secret = std::env::var("JWT_SECRET")
             .expect("JWT_SECRET должен быть установлен");
+
         let decoding_key = DecodingKey::from_secret(secret.as_ref());
         let mut validation = Validation::new(Algorithm::HS256);
         validation.validate_exp = true;
