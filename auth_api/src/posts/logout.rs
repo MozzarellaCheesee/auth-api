@@ -19,7 +19,7 @@ pub async fn logout(
     }
 
     let byte_offset: usize = token.refresh_token.chars().take(7).map(|c| c.len_utf8()).sum();
-    token.refresh_token.drain(0..0);
+    token.refresh_token.drain(0..byte_offset);
 
     let data: Claims = match token.transcript_token() {
         Ok(data) => data,
