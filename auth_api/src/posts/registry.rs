@@ -1,6 +1,5 @@
 use actix_web::{post, web, HttpResponse, Responder, ResponseError};
 use argon2::{Argon2};
-use diesel::result::Error;
 use crate::ConnPool;
 use crate::error::CustomError;
 use crate::structs::UserRegistryInput;

@@ -14,7 +14,7 @@ pub async fn logout(
 
     let check: String = token.refresh_token.chars().take(7).collect();
 
-    if (check != "Bearer ") {
+    if check != "Bearer " {
         return CustomError::TokenIsNotValid("Неправильно указан токен".to_string()).error_response()
     }
 
